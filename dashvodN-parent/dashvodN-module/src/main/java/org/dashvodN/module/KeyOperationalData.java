@@ -53,7 +53,7 @@ public class KeyOperationalData {
 	/**
 	 * 用户总数
 	 */
-	@Column(name="KEYOPTDATA_STAT_TIME")
+	@Column(name="KEYOPTDATA_STAT_TOTALPEOPLE")
 	private Long totalPeople;
 	
 	/**

@@ -30,7 +30,7 @@ public class OverallDataTrends {
 	 * 展示时间 单位/天
 	 */
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	@Column(name = "KEYOPTDATA_STAT_TIME")
+	@Column(name = "OVERALL_DATA_TRENDS_STAT_TIME")
 	private Date time;
 
 	/**

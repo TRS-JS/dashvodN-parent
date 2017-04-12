@@ -78,7 +78,6 @@ spring:
     port: 6379
     password: 
     timeout: 0
-    expired: 30
     pool:
       max-idle: 100
       max-active: 1000
