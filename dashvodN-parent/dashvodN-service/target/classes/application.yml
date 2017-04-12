@@ -1,0 +1,156 @@
+userName: lenovo
+password: jia
+  
+url: http://localhost:${server.port}/vod/
+
+---
+#视云的接口地址
+
+data:
+  url1: http://testdata1.tvxio.com/lenovo/video/overview
+  url2: http://testdata1.tvxio.com/lenovo/video/source
+
+server:  
+  port: 8097  
+  session:
+    timeout: 86400000 
+  tomcat:
+     max-threads: 600
+     min-spare-threads: 100
+     accesslog:
+      enabled: true
+     uri-encoding: UTF-8
+     basedir: d:/tmp
+  context-path: /vew
+
+
+spring:  
+  datasource: 
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName : com.mysql.jdbc.Driver
+    hikari:
+      maxLifetime: 1765000
+      maximumPoolSize: 5
+      idle-timeout: 600000
+      minimum-idle: 3
+      connection-timeout: 30000
+  jpa:  
+    database : MYSQL  
+    show-sql : true
+    hibernate:  
+      ddl-auto : update  
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy  
+    properties:  
+      hibernate:  
+        dialect : org.hibernate.dialect.MySQL5Dialect 
+  http:
+    encoding:
+      enabled: true
+  profiles:
+    active: prod
+  resources:
+    chain:
+      gzipped: true
+  redis:
+    database: 0
+    host: redis.lenovolex.com
+    port: 6379
+    password: 
+    timeout: 0
+    expired: 30
+    pool:
+      max-idle: 100
+      max-active: 1000
+      max-wait: 30000
+  
+      
+---  
+# 本地开发环境配置  
+spring:  
+  profiles: localdev
+  datasource :
+    url : jdbc:mysql://localhost:3306/dashvod?useUnicode=true&characterEncoding=utf-8&useSSL=true&verifyServerCertificate=false    
+    username : root
+    password: root
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 
+    timeout: 0
+    expired: 30
+    pool:
+      max-idle: 100
+      max-active: 1000
+      max-wait: 30000
+  jpa:  
+      show-sql : true
+
+    
+---
+# 演示环境配置  
+spring:  
+  profiles: demo
+  datasource :
+    url : jdbc:mysql://172.16.13.190:3306/dashvod?useUnicode=true&characterEncoding=utf-8&useSSL=true&verifyServerCertificate=false   
+    username : root
+    password: LenovoPCG123 
+  redis:
+    database: 0
+    host: 172.16.13.188
+    port: 6379
+    password: 
+    timeout: 0
+    expired: 30
+    pool:
+      max-idle: 100
+      max-active: 1000
+      max-wait: 30000
+---  
+# 开发环境配置  
+spring:  
+  profiles: dev
+  datasource :
+    url : jdbc:mysql://172.29.2.167:3306/dashvod?useUnicode=true&autoReconnect=true&characterEncoding=utf-8  
+    username : root
+    password: Lenovo
+  redis:
+    database: 0
+    host: 172.29.2.166
+    port: 6379
+    password: 
+    timeout: 0
+    expired: 30
+    pool:
+      max-idle: 100
+      max-active: 1000
+      max-wait: 30000 
+---  
+# 测试环境配置  
+spring:  
+  profiles: test  
+  datasource:
+    url: jdbc:mysql://172.29.2.169:3306/dashvod?useUnicode=true&autoReconnect=true&characterEncoding=utf-8  
+    username: root
+    password: lenovo_test
+  redis:
+    database: 0
+    host: 172.29.2.168
+    port: 6379
+    password: 
+    timeout: 0
+    expired: 30
+    pool:
+      max-idle: 100
+      max-active: 1000
+      max-wait: 30000
+    
+---  
+# 生产环境配置  
+spring:  
+  profiles: prod  
+  datasource:
+    url: jdbc:mysql://rm-2zexpn42j6ymkk9j5.mysql.rds.aliyuncs.com:3306/dashvodvod?useUnicode=true&autoReconnect=true&characterEncoding=utf-8  
+    username: smart_lex
+    password: 3e4r5t6y7u2wSMART

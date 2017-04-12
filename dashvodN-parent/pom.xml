@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	 <groupId>com.lenovo.dashvodN</groupId>
+    <artifactId>dashvodN-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+	<modules>
+		<module>dashvodN-module</module>
+		<module>dashvodN-DAO</module>
+		<module>dashvodN-service</module>
+		<module>dashvodN-web</module>
+	</modules>
+	
+	
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.1.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<!-- actuator是spring boot提供的对应用系统的自省和监控的集成功能，可以对应用系统进行配置查看、相关功能统计等 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- 引入hikai连接池 -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<!-- 引入Druid连接池 -->
+		<!-- <dependency> <groupId>com.alibaba</groupId> <artifactId>druid</artifactId> 
+			<version>1.0.25</version> </dependency> -->
+		<!-- JPA模块 排除tomcat本地连接池 启用hikai -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.tomcat</groupId>
+					<artifactId>tomcat-jdbc</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- 添加缓存支持 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+
+		<!-- Fastjson是一个Java语言编写的JSON处理器 -->
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.22</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+		<!-- 是一个简单的java类库用于将一种对象转换成另外一种对象 -->
+		<dependency>
+			<groupId>net.sf.ezmorph</groupId>
+			<artifactId>ezmorph</artifactId>
+			<version>1.0.6</version>
+		</dependency>
+		<!-- 引入常用的字符串工具 -->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
+		<!-- 引入HTTPCLIENT组建 用户网络请求 -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<!-- <version>4.3.6</version> -->
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>20.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
